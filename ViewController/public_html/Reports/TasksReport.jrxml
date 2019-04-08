@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TasksReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0987b3c2-5168-4b98-8f43-4b6edcefb8d1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<subDataset name="TasksStatusCount" uuid="ca7c20b3-ca4c-4f21-be87-808cbdf9e433">
+		<queryString language="SQL">
+			<![CDATA[select username, status, count(task_id)
+from users join tasks
+on user_id = assigned_to
+group by username, status]]>
+		</queryString>
+		<field name="USERNAME" class="java.lang.String"/>
+		<field name="STATUS" class="java.lang.String"/>
+		<field name="COUNT(TASK_ID)" class="java.math.BigDecimal"/>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     USERS."USER_ID" AS USERS_USER_ID,
+     USERS."FIRST_NAME" AS USERS_FIRST_NAME,
+     USERS."MIDDLE_NAME" AS USERS_MIDDLE_NAME,
+     USERS."LAST_NAME" AS USERS_LAST_NAME,
+     USERS."USERNAME" AS USERS_USERNAME,
+     USERS."PASSWORD" AS USERS_PASSWORD,
+     USERS."EMAIL" AS USERS_EMAIL,
+     USERS."MOBILE" AS USERS_MOBILE,
+     USERS."USER_TYPE" AS USERS_USER_TYPE,
+     TASKS."TASK_ID" AS TASKS_TASK_ID,
+     TASKS."TASK_TITLE" AS TASKS_TASK_TITLE,
+     TASKS."DESCRIPTION" AS TASKS_DESCRIPTION,
+     TASKS."START_DATE" AS TASKS_START_DATE,
+     TASKS."END_DATE" AS TASKS_END_DATE,
+     TASKS."STATUS" AS TASKS_STATUS,
+     TASKS."ASSIGNED_TO" AS TASKS_ASSIGNED_TO,
+     TASKS."ASSIGNED_BY" AS TASKS_ASSIGNED_BY
+FROM
+     "TASKS"."USERS" USERS INNER JOIN "TASKS"."TASKS" TASKS ON USERS."USER_ID" = TASKS."ASSIGNED_TO"]]>
+	</queryString>
+	<field name="USERS_USER_ID" class="java.math.BigDecimal"/>
+	<field name="USERS_USERNAME" class="java.lang.String"/>
+	<field name="USERS_EMAIL" class="java.lang.String"/>
+	<field name="TASKS_TASK_ID" class="java.math.BigDecimal"/>
+	<field name="TASKS_TASK_TITLE" class="java.lang.String"/>
+	<field name="TASKS_STATUS" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="b83b08a5-e9d1-47a2-8d1c-024017bdcdfa"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Tasks Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="29fd9ac4-25e3-4226-8bde-da6977582804"/>
+				<text><![CDATA[Tasks for All Users]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="c4920a65-48a7-41dd-bdaa-69c58e520ab3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="92" height="15" uuid="fe210bf2-7693-4329-9d67-4030ab227aa2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[User ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="92" y="19" width="92" height="15" uuid="82fd63b9-8c4c-4763-a3a5-351e22635ddd"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Username]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="184" y="19" width="92" height="15" uuid="245672e9-0ba2-4c7d-b968-e08339245f53"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[E-Mail]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="19" width="92" height="15" uuid="669647a6-a9ea-415c-bf23-94abde3127eb"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Task ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="368" y="19" width="92" height="15" uuid="d76f651f-a0a5-49ae-9afb-504e98739693"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Task Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="460" y="19" width="92" height="15" uuid="8e32fabe-02b5-4db1-be12-c48915ef61a8"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="256174bb-2893-4377-a95e-7547bd4887a1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="92" height="15" uuid="1ac7ffbe-134e-420b-9c47-cddbdb7d600e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{USERS_USER_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="92" y="0" width="92" height="15" uuid="96639872-1941-45f7-bfb9-364e17c13b59"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{USERS_USERNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="184" y="0" width="92" height="15" uuid="ce488930-e278-4daa-8aca-2d5b6ee628c1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{USERS_EMAIL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="276" y="0" width="92" height="15" uuid="067ac3ea-cc78-4ff3-9ca1-e097a418e703"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{TASKS_TASK_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="368" y="0" width="92" height="15" uuid="e17d47aa-6697-4966-9458-d5a5a67beaa8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{TASKS_TASK_TITLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="460" y="0" width="92" height="15" uuid="849e7855-1e7a-44ef-a374-91c0aaf4bf07"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{TASKS_STATUS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="cc777b33-05d4-422b-a08c-200521682e92"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="85b58414-692f-4494-a517-7170b54b6999"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="c3639d8b-5097-4e97-931b-7bd383345122"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="84c3522c-7f8e-4b52-8480-8408c937fdad"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="802" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement x="0" y="0" width="555" height="802" uuid="530a39d3-5082-4d0d-bf79-1f13ae5cf592"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset>
+						<datasetRun subDataset="TasksStatusCount" uuid="3bc67f51-3bb3-4f04-b051-a2fc99e1b673"/>
+					</dataset>
+					<keyExpression><![CDATA[$F{USERNAME} + "-" +$F{STATUS}]]></keyExpression>
+					<valueExpression><![CDATA[$F{COUNT(TASK_ID)}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</summary>
+</jasperReport>

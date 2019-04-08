@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="Home">
+    <page>/Home.jspx</page>
+  </view>
+  <view id="DashBoard">
+    <page>/DashBoard.jspx</page>
+  </view>
+  <view id="UserTasks">
+    <page>/UserTasks.jspx</page>
+  </view>
+  <method-call id="SetCurrentRowWithKeyValue">
+    <method>#{bindings.setCurrentRowWithKeyValue.execute}</method>
+    <outcome>
+      <fixed-outcome>setCurrentRowWithKeyValue</fixed-outcome>
+    </outcome>
+  </method-call>
+  <control-flow-rule id="__1">
+    <from-activity-id>Home</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>adminLogin</from-outcome>
+      <to-activity-id>DashBoard</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>userLogin</from-outcome>
+      <to-activity-id>SetCurrentRowWithKeyValue</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__4">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__5">
+      <from-outcome>logout</from-outcome>
+      <to-activity-id>Home</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__10">
+    <from-activity-id>SetCurrentRowWithKeyValue</from-activity-id>
+    <control-flow-case id="__11">
+      <from-outcome>setCurrentRowWithKeyValue</from-outcome>
+      <to-activity-id>UserTasks</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__6">
+    <managed-bean-name>template_bean</managed-bean-name>
+    <managed-bean-class>view.backing.TemplateBean</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__7">
+    <managed-bean-name>backing_Home</managed-bean-name>
+    <managed-bean-class>view.backing.Home</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1Home.jspx-->
+  </managed-bean>
+  <managed-bean id="__8">
+    <managed-bean-name>backing_DashBoard</managed-bean-name>
+    <managed-bean-class>view.backing.DashBoard</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1DashBoard.jspx-->
+  </managed-bean>
+  <managed-bean id="__9">
+    <managed-bean-name>backing_UserTasks</managed-bean-name>
+    <managed-bean-class>view.backing.UserTasks</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1UserTasks.jspx-->
+  </managed-bean>
+</adfc-config>

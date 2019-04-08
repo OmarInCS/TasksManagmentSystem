@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <af:pageTemplateDef var="attrs" definition="private">
+        <af:xmlContent>
+            <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+                <description/>
+                <display-name>template</display-name>
+                <facet>
+                    <facet-name>title</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>user</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>body</facet-name>
+                </facet>
+            </component>
+        </af:xmlContent>
+        <af:panelGridLayout id="pt_pgl1">
+            <af:gridRow height="100px" id="pt_gr2">
+                <af:gridCell width="100%" halign="stretch" valign="stretch" id="pt_gc1">
+                    <!-- Header -->
+                    <af:panelGridLayout id="pt_pgl2">
+                        <af:gridRow marginTop="0px" height="80%" id="pt_gr3">
+                            <af:gridCell marginStart="0px" width="80%" id="pt_gc3">
+                                <af:image source="#{resource['images:innerbanner.png']}" id="pt_i1"/>
+                            </af:gridCell>
+                            <af:gridCell marginStart="0px" width="20%" marginEnd="0px" id="pt_gc4">
+                                <af:facetRef facetName="user"/>
+                            </af:gridCell>
+                        </af:gridRow>
+                        <af:gridRow marginTop="0px" height="20%" marginBottom="0px" id="pt_gr4">
+                            <af:gridCell marginStart="0px" width="80%" id="pt_gc5">
+                                <af:facetRef facetName="title"/>
+                            </af:gridCell>
+                            <af:gridCell marginStart="0px" width="20%" marginEnd="0px" id="pt_gc6">
+                                <af:button text="Ar" id="pt_b1"
+                                           action="#{backingBeanScope.template_bean.ar_action}" partialSubmit="false"/>
+                                <af:button text="En" id="pt_b2" partialSubmit="false"/>
+                                <af:button actionListener="#{bindings.Commit.execute}" text="Save"
+                                           disabled="false" id="pt_b3"/>
+                                <af:button actionListener="#{bindings.Rollback.execute}" text="Cancel"
+                                           disabled="false" immediate="true" id="pt_b4">
+                                    <af:resetActionListener/>
+                                </af:button>
+                            </af:gridCell>
+                        </af:gridRow>
+                    </af:panelGridLayout>
+                </af:gridCell>
+            </af:gridRow>
+            <af:gridRow height="100%" id="pt_gr1">
+                <af:gridCell width="100%" halign="stretch" valign="stretch" id="pt_gc2">
+                    <!-- Content -->
+                    <af:panelBox id="pt_pb1" showDisclosure="false" inlineStyle="margin-top:20px;">
+                        <f:facet name="toolbar"/>
+                        <af:facetRef facetName="body"/>
+                    </af:panelBox>
+                </af:gridCell>
+            </af:gridRow>
+        </af:panelGridLayout>
+    </af:pageTemplateDef>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:template_bean-->
+</jsp:root>

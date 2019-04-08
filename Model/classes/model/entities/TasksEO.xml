@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TasksEO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="TASKS"
+  AliasName="TasksEO"
+  BindingStyle="OracleName"
+  RowClass="model.entities.TasksEOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="TaskStatusVO1"
+    ViewObjectName="model.views.TaskStatusVO"
+    RowLevelBinds="true"/>
+  <Attribute
+    Name="TaskId"
+    Precision="6"
+    Scale="0"
+    ColumnName="TASK_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.DBSequence"
+    ColumnType="NUMBER"
+    TableName="TASKS"
+    PrimaryKey="true"
+    IsUpdateable="while_insert"
+    DefaultValue="@0"
+    Domain="oracle.jbo.domain.DBSequence"
+    RetrievedOnInsert="true"
+    IsNotNull="true">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.entities.TasksEO.TaskId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="TaskTitle"
+    IsNotNull="true"
+    Precision="80"
+    ColumnName="TASK_TITLE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TASKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.entities.TasksEO.TaskTitle_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <DISPLAYHEIGHT
+          Value="2"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Description"
+    Precision="255"
+    ColumnName="DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TASKS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.entities.TasksEO.Description_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <DISPLAYHEIGHT
+          Value="6"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="StartDate"
+    ColumnName="START_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="TASKS">
+    <TransientExpression
+      trustMode="untrusted"><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.entities.TasksEO.StartDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="EndDate"
+    ColumnName="END_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="TASKS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.entities.TasksEO.EndDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Status"
+    Precision="20"
+    ColumnName="STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TASKS"
+    RetrievedOnUpdate="true"
+    RetrievedOnInsert="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.entities.TasksEO.Status_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="AssignedTo"
+    Precision="4"
+    Scale="0"
+    ColumnName="ASSIGNED_TO"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="TASKS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.entities.TasksEO.AssignedTo_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="AssignedBy"
+    Precision="4"
+    Scale="0"
+    ColumnName="ASSIGNED_BY"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="TASKS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.entities.TasksEO.AssignedBy_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <AccessorAttribute
+    Name="Users"
+    Association="model.assoc.UsersTasksAssignedToFkAss"
+    AssociationEnd="model.assoc.UsersTasksAssignedToFkAss.Users"
+    AssociationOtherEnd="model.assoc.UsersTasksAssignedToFkAss.Tasks"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Users1"
+    Association="model.assoc.UsersTasksAssignedByFkAss"
+    AssociationEnd="model.assoc.UsersTasksAssignedByFkAss.Users1"
+    AssociationOtherEnd="model.assoc.UsersTasksAssignedByFkAss.Tasks1"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC008251"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C008251"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entities.TasksEO.TaskId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="TasksTaskIdCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="TASKS_TASK_ID_CHECK"/>
+      <Attr Name="_checkCondition" Value='"TASK_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entities.TasksEO.TaskId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UsersTasksAssignedByFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C008248"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="USERS_TASKS_ASSIGNED_BY_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entities.TasksEO.AssignedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UsersTasksAssignedToFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C008248"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="USERS_TASKS_ASSIGNED_TO_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entities.TasksEO.AssignedTo"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

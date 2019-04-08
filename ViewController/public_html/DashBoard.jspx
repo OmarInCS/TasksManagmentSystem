@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="DashBoard" id="d1" binding="#{backingBeanScope.backing_DashBoard.d1}">
+            <af:messages id="m1" binding="#{backingBeanScope.backing_DashBoard.m1}"/>
+            <af:form id="f1" binding="#{backingBeanScope.backing_DashBoard.f1}">
+                <af:pageTemplate viewId="/template.jspx" value="#{bindings.ptb1}" id="pt1">
+                    <f:facet name="title">
+                        <af:outputText value="Dashboard" id="ot1"
+                                       binding="#{backingBeanScope.backing_DashBoard.ot1}"
+                                       styleClass="title"/>
+                    </f:facet>
+                    <f:facet name="user">
+                        <af:outputText value="Hello  #{backingBeanScope.backing_DashBoard.username}" id="ot2"
+                                       binding="#{backingBeanScope.backing_DashBoard.ot2}" inlineStyle="color:White;"/>
+                    </f:facet>
+                    <f:facet name="body">
+                        <af:panelSplitter id="ps1" binding="#{backingBeanScope.backing_DashBoard.ps1}"
+                                          orientation="vertical">
+                            <f:facet name="first">
+                                <af:panelCollection id="pc1" binding="#{backingBeanScope.backing_DashBoard.pc1}">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="t2" binding="#{backingBeanScope.backing_DashBoard.t2}">
+                                            <af:button text="Report" id="b2" destination="/reportservlet" targetFrame="_blank"
+                                                       binding="#{backingBeanScope.backing_DashBoard.b2}"/>
+                                        </af:toolbar>
+                                    </f:facet>
+                                    <f:facet name="statusbar"/>
+                                    <af:table value="#{bindings.Tasks1.collectionModel}" var="row"
+                                              rows="#{bindings.Tasks1.rangeSize}"
+                                              emptyText="#{bindings.Tasks1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.Tasks1.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.Tasks1.collectionModel.makeCurrent}"
+                                              rowSelection="single" fetchSize="#{bindings.Tasks1.rangeSize}"
+                                              filterModel="#{bindings.Tasks1Query.queryDescriptor}"
+                                              queryListener="#{bindings.Tasks1Query.processQuery}" filterVisible="true"
+                                              varStatus="vs" id="t1" binding="#{backingBeanScope.backing_DashBoard.t1}"
+                                              columnStretching="column:c3">
+                                        <af:column sortProperty="#{bindings.Tasks1.hints.TaskId.name}" filterable="true"
+                                                   sortable="true" headerText="#{bindings.Tasks1.hints.TaskId.label}"
+                                                   id="c1">
+                                            <af:inputText value="#{row.bindings.TaskId.inputValue}"
+                                                          label="#{bindings.Tasks1.hints.TaskId.label}"
+                                                          required="#{bindings.Tasks1.hints.TaskId.mandatory}"
+                                                          columns="#{bindings.Tasks1.hints.TaskId.displayWidth}"
+                                                          maximumLength="#{bindings.Tasks1.hints.TaskId.precision}"
+                                                          shortDesc="#{bindings.Tasks1.hints.TaskId.tooltip}" id="it1">
+                                                <f:validator binding="#{row.bindings.TaskId.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.Tasks1.hints.TaskId.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.Tasks1.hints.TaskTitle.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.Tasks1.hints.TaskTitle.label}" id="c2">
+                                            <af:inputText value="#{row.bindings.TaskTitle.inputValue}"
+                                                          label="#{bindings.Tasks1.hints.TaskTitle.label}"
+                                                          required="#{bindings.Tasks1.hints.TaskTitle.mandatory}"
+                                                          columns="#{bindings.Tasks1.hints.TaskTitle.displayWidth}"
+                                                          maximumLength="#{bindings.Tasks1.hints.TaskTitle.precision}"
+                                                          shortDesc="#{bindings.Tasks1.hints.TaskTitle.tooltip}"
+                                                          id="it2">
+                                                <f:validator binding="#{row.bindings.TaskTitle.validator}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.Tasks1.hints.Description.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.Tasks1.hints.Description.label}" id="c3">
+                                            <af:inputText value="#{row.bindings.Description.inputValue}"
+                                                          label="#{bindings.Tasks1.hints.Description.label}"
+                                                          required="#{bindings.Tasks1.hints.Description.mandatory}"
+                                                          columns="#{bindings.Tasks1.hints.Description.displayWidth}"
+                                                          maximumLength="#{bindings.Tasks1.hints.Description.precision}"
+                                                          shortDesc="#{bindings.Tasks1.hints.Description.tooltip}"
+                                                          id="it3" contentStyle="width:100%;">
+                                                <f:validator binding="#{row.bindings.Description.validator}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.Tasks1.hints.StartDate.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.Tasks1.hints.StartDate.label}" id="c4">
+                                            <f:facet name="filter">
+                                                <af:inputDate value="#{bindings.Tasks1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.StartDate.value}"
+                                                              id="id1"
+                                                              binding="#{backingBeanScope.backing_DashBoard.id1}">
+                                                    <af:convertDateTime pattern="#{bindings.Tasks1.hints.StartDate.format}"/>
+                                                </af:inputDate>
+                                            </f:facet>
+                                            <af:inputDate value="#{row.bindings.StartDate.inputValue}"
+                                                          label="#{bindings.Tasks1.hints.StartDate.label}"
+                                                          required="#{bindings.Tasks1.hints.StartDate.mandatory}"
+                                                          columns="#{bindings.Tasks1.hints.StartDate.displayWidth}"
+                                                          shortDesc="#{bindings.Tasks1.hints.StartDate.tooltip}"
+                                                          id="id2">
+                                                <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                                                <af:convertDateTime pattern="#{bindings.Tasks1.hints.StartDate.format}"/>
+                                            </af:inputDate>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.Tasks1.hints.EndDate.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.Tasks1.hints.EndDate.label}" id="c5">
+                                            <f:facet name="filter">
+                                                <af:inputDate value="#{bindings.Tasks1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.EndDate.value}"
+                                                              id="id3"
+                                                              binding="#{backingBeanScope.backing_DashBoard.id3}">
+                                                    <af:convertDateTime pattern="#{bindings.Tasks1.hints.EndDate.format}"/>
+                                                </af:inputDate>
+                                            </f:facet>
+                                            <af:inputDate value="#{row.bindings.EndDate.inputValue}"
+                                                          label="#{bindings.Tasks1.hints.EndDate.label}"
+                                                          required="#{bindings.Tasks1.hints.EndDate.mandatory}"
+                                                          columns="#{bindings.Tasks1.hints.EndDate.displayWidth}"
+                                                          shortDesc="#{bindings.Tasks1.hints.EndDate.tooltip}" id="id4">
+                                                <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                                                <af:convertDateTime pattern="#{bindings.Tasks1.hints.EndDate.format}"/>
+                                            </af:inputDate>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.Tasks1.hints.Status.name}" filterable="true"
+                                                   sortable="true" headerText="#{bindings.Tasks1.hints.Status.label}"
+                                                   id="c6">
+                                            <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                                                label="#{row.bindings.Status.label}"
+                                                                required="#{bindings.Tasks1.hints.Status.mandatory}"
+                                                                shortDesc="#{bindings.Tasks1.hints.Status.tooltip}"
+                                                                id="soc1">
+                                                <f:selectItems value="#{row.bindings.Status.items}" id="si1"/>
+                                                <f:validator binding="#{row.bindings.Status.validator}"/>
+                                            </af:selectOneChoice>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.Tasks1.hints.AssignedTo.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.Tasks1.hints.AssignedTo.label}" id="c7">
+                                            <af:inputText value="#{row.bindings.AssignedTo.inputValue}"
+                                                          label="#{bindings.Tasks1.hints.AssignedTo.label}"
+                                                          required="#{bindings.Tasks1.hints.AssignedTo.mandatory}"
+                                                          columns="#{bindings.Tasks1.hints.AssignedTo.displayWidth}"
+                                                          maximumLength="#{bindings.Tasks1.hints.AssignedTo.precision}"
+                                                          shortDesc="#{bindings.Tasks1.hints.AssignedTo.tooltip}"
+                                                          id="it4">
+                                                <f:validator binding="#{row.bindings.AssignedTo.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.Tasks1.hints.AssignedTo.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.Tasks1.hints.AssignedBy.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.Tasks1.hints.AssignedBy.label}" id="c8">
+                                            <af:inputText value="#{row.bindings.AssignedBy.inputValue}"
+                                                          label="#{bindings.Tasks1.hints.AssignedBy.label}"
+                                                          required="#{bindings.Tasks1.hints.AssignedBy.mandatory}"
+                                                          columns="#{bindings.Tasks1.hints.AssignedBy.displayWidth}"
+                                                          maximumLength="#{bindings.Tasks1.hints.AssignedBy.precision}"
+                                                          shortDesc="#{bindings.Tasks1.hints.AssignedBy.tooltip}"
+                                                          id="it5">
+                                                <f:validator binding="#{row.bindings.AssignedBy.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.Tasks1.hints.AssignedBy.format}"/>
+                                            </af:inputText>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                            </f:facet>
+                            <f:facet name="second">
+                                <af:panelDashboard id="pd1" binding="#{backingBeanScope.backing_DashBoard.pd1}"
+                                                   columns="2" rowHeight="200px">
+                                    <af:panelBox text="Count Each Status Chart" id="pb1"
+                                                 binding="#{backingBeanScope.backing_DashBoard.pb1}">
+                                        <f:facet name="toolbar"/>
+                                        <dvt:pieChart id="pieChart1" var="row"
+                                                      value="#{bindings.UserTasksStatusCountR1.collectionModel}"
+                                                      binding="#{backingBeanScope.backing_DashBoard.pieChart1}">
+                                            <dvt:chartLegend id="cl1"/>
+                                            <dvt:pieDataItem id="di1" value="#{row.Selectobjects2}"
+                                                             label="#{row.Username} #{row.Status}"
+                                                             binding="#{backingBeanScope.backing_DashBoard.di1}"/>
+                                        </dvt:pieChart>
+                                    </af:panelBox>
+                                    <af:panelBox text="PanelBox2" id="pb2"
+                                                 binding="#{backingBeanScope.backing_DashBoard.pb2}">
+                                        <f:facet name="toolbar"/>
+                                    </af:panelBox>
+                                </af:panelDashboard>
+                            </f:facet>
+                        </af:panelSplitter>
+                    </f:facet>
+                </af:pageTemplate>
+            </af:form>
+            <af:form id="f2" binding="#{backingBeanScope.backing_DashBoard.f2}">
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                          binding="#{backingBeanScope.backing_DashBoard.p1}">
+                    <af:panelWindow id="pw2" binding="#{backingBeanScope.backing_DashBoard.pw2}">
+                        <af:panelGroupLayout id="pgl1" binding="#{backingBeanScope.backing_DashBoard.pgl1}">
+                            <af:outputText value="outputText1" id="ot4"
+                                           binding="#{backingBeanScope.backing_DashBoard.ot4}"/>
+                            <af:button text="button 1" id="b1" binding="#{backingBeanScope.backing_DashBoard.b1}"
+                                       action="logout"/>
+                        </af:panelGroupLayout>
+                    </af:panelWindow>
+                </af:popup>
+            </af:form>
+        </af:document>
+    </f:view>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_DashBoard-->
+</jsp:root>

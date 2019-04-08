@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="Home.jspx" id="d1" binding="#{backingBeanScope.backing_Home.d1}">
+            <af:messages id="m1" binding="#{backingBeanScope.backing_Home.m1}"/>
+            <af:form id="f1" binding="#{backingBeanScope.backing_Home.f1}">
+                <af:pageTemplate viewId="/template.jspx" value="#{bindings.ptb1}" id="pt1">
+                    <f:facet name="title">
+                        <af:outputText value="Log In" id="ot1" binding="#{backingBeanScope.backing_Home.ot1}"
+                                       styleClass="title"/>
+                    </f:facet>
+                    <f:facet name="user"/>
+                    <f:facet name="body">
+                        <af:panelFormLayout id="pfl1" binding="#{backingBeanScope.backing_Home.pfl1}">
+                            <f:facet name="footer">
+                                <af:panelGroupLayout id="pgl1" binding="#{backingBeanScope.backing_Home.pgl1}">
+                                    <af:spacer width="200" height="10" id="s1"
+                                               binding="#{backingBeanScope.backing_Home.s1}"/>
+                                    <af:button text="Log In" id="b1" binding="#{backingBeanScope.backing_Home.b1}"
+                                               action="#{backingBeanScope.backing_Home.login_action}"/>
+                                </af:panelGroupLayout>
+                            </f:facet>
+                            <af:inputText label="Username" id="it1" binding="#{backingBeanScope.backing_Home.it1}"
+                                          value="#{backingBeanScope.backing_Home.username}"/>
+                            <af:inputText label="Password" id="it2" binding="#{backingBeanScope.backing_Home.it2}"
+                                          secret="true" value="#{backingBeanScope.backing_Home.password}"/>
+                            <af:selectOneRadio value="#{bindings.UserTypes1.inputValue}"
+                                               label="User Type"
+                                               required="#{bindings.UserTypes1.hints.mandatory}"
+                                               shortDesc="#{bindings.UserTypes1.hints.tooltip}" id="sor1"
+                                               binding="#{backingBeanScope.backing_Home.sor1}">
+                                <f:selectItems value="#{bindings.UserTypes1.items}" id="si1"
+                                               binding="#{backingBeanScope.backing_Home.si1}"/>
+                                <f:validator binding="#{bindings.UserTypes1.validator}"/>
+                            </af:selectOneRadio>
+                        </af:panelFormLayout>
+                    </f:facet>
+                </af:pageTemplate>
+            </af:form>
+        </af:document>
+    </f:view>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_Home-->
+</jsp:root>

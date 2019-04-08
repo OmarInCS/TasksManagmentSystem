@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="UsersTasksAssignedByFkVL"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  EntityAssociation="model.assoc.UsersTasksAssignedByFkAss">
+  <ViewLinkDefEnd
+    Name="Users"
+    Cardinality="1"
+    Source="true"
+    Owner="model.views.UsersVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="Users"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.views.UsersVO.UserId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="Tasks1"
+    Cardinality="-1"
+    Owner="model.views.TasksVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="Tasks1"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.views.TasksVO.AssignedBy"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

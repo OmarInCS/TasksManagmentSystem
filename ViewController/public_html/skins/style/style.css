@@ -1,0 +1,51 @@
+@charset "UTF-8";
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+
+.AFDefaultFontFamily:alias {
+    font-family: cursive; 
+}
+
+.AFDefaultFont:alias {
+    font-size: 16px; 
+}
+
+.AFButtonGradientStartColor:alias {
+    color: #D6FFD6; 
+}
+
+.AFButtonBorderBottomColor:alias {
+    color: #8DEC8D; 
+}
+
+.AFButtonBorderColor:alias {
+    color: #91ED91; 
+}
+
+/*INFO: Color value exceeded range after adjustment: HSL(120, 101%, 85%)*/
+.AFButtonGradientEndColor:alias {
+    color: #B7FFB7; 
+}
+
+af|button {
+    padding: 5px;
+}
+
+af|inputText::content {
+    font-size: 16px;
+    
+}
+
+af|table::data-row {
+    height: auto; 
+}
+
+af|panelCollection {  
+    width: 100%; 
+}
+
+.title {
+    color: White; 
+    font-size: xx-large; 
+}

@@ -1,0 +1,403 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="UserTasks" id="d1" binding="#{backingBeanScope.backing_UserTasks.d1}">
+            <af:messages id="m1" binding="#{backingBeanScope.backing_UserTasks.m1}"/>
+            <af:form id="f1" binding="#{backingBeanScope.backing_UserTasks.f1}">
+                <af:pageTemplate viewId="/template.jspx" value="#{bindings.ptb1}" id="pt1">
+                    <f:facet name="title">
+                        <af:outputText value="Tasks" id="ot1"
+                                       binding="#{backingBeanScope.backing_UserTasks.ot1}" styleClass="title"/>
+                    </f:facet>
+                    <f:facet name="user">
+                        <af:outputText id="ot2"
+                                       binding="#{backingBeanScope.backing_UserTasks.ot2}"
+                                       value="#{backingBeanScope.backing_UserTasks.username}"
+                                       inlineStyle="color:White;"/>
+                    </f:facet>
+                    <f:facet name="body">
+                        <af:panelTabbed position="start" id="pt2" binding="#{backingBeanScope.backing_UserTasks.pt2}">
+                            <af:showDetailItem id="tab2" text="Tasks" disclosed="true"
+                                               binding="#{backingBeanScope.backing_UserTasks.tab2}">
+                                <af:panelGridLayout id="pgl1" binding="#{backingBeanScope.backing_UserTasks.pgl1}">
+                                    <af:gridRow marginTop="5px" height="20%" id="gr1"
+                                                binding="#{backingBeanScope.backing_UserTasks.gr1}">
+                                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc1"
+                                                     binding="#{backingBeanScope.backing_UserTasks.gc1}">
+                                            <af:panelFormLayout id="pfl1"
+                                                                binding="#{backingBeanScope.backing_UserTasks.pfl1}"
+                                                                rows="4">
+                                                <af:inputText value="#{bindings.TaskId.inputValue}"
+                                                              label="#{bindings.TaskId.hints.label}"
+                                                              required="#{bindings.TaskId.hints.mandatory}"
+                                                              columns="#{bindings.TaskId.hints.displayWidth}"
+                                                              maximumLength="#{bindings.TaskId.hints.precision}"
+                                                              shortDesc="#{bindings.TaskId.hints.tooltip}" id="it1"
+                                                              binding="#{backingBeanScope.backing_UserTasks.it1}">
+                                                    <f:validator binding="#{bindings.TaskId.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.TaskId.format}"/>
+                                                </af:inputText>
+                                                <af:inputText value="#{bindings.TaskTitle.inputValue}"
+                                                              label="#{bindings.TaskTitle.hints.label}"
+                                                              required="#{bindings.TaskTitle.hints.mandatory}"
+                                                              columns="#{bindings.TaskTitle.hints.displayWidth}"
+                                                              maximumLength="#{bindings.TaskTitle.hints.precision}"
+                                                              shortDesc="#{bindings.TaskTitle.hints.tooltip}" id="it2"
+                                                              binding="#{backingBeanScope.backing_UserTasks.it2}"
+                                                              rows="#{bindings.TaskTitle.hints.displayHeight}">
+                                                    <f:validator binding="#{bindings.TaskTitle.validator}"/>
+                                                </af:inputText>
+                                                <af:inputText value="#{bindings.Description.inputValue}"
+                                                              label="#{bindings.Description.hints.label}"
+                                                              required="#{bindings.Description.hints.mandatory}"
+                                                              columns="#{bindings.Description.hints.displayWidth}"
+                                                              maximumLength="#{bindings.Description.hints.precision}"
+                                                              shortDesc="#{bindings.Description.hints.tooltip}"
+                                                              id="it3"
+                                                              binding="#{backingBeanScope.backing_UserTasks.it3}"
+                                                              rows="#{bindings.Description.hints.displayHeight}">
+                                                    <f:validator binding="#{bindings.Description.validator}"/>
+                                                </af:inputText>
+                                                <af:inputDate value="#{bindings.StartDate.inputValue}"
+                                                              label="#{bindings.StartDate.hints.label}"
+                                                              required="#{bindings.StartDate.hints.mandatory}"
+                                                              columns="#{bindings.StartDate.hints.displayWidth}"
+                                                              shortDesc="#{bindings.StartDate.hints.tooltip}" id="id1"
+                                                              binding="#{backingBeanScope.backing_UserTasks.id1}">
+                                                    <f:validator binding="#{bindings.StartDate.validator}"/>
+                                                    <af:convertDateTime pattern="#{bindings.StartDate.format}"/>
+                                                </af:inputDate>
+                                                <af:inputDate value="#{bindings.EndDate.inputValue}"
+                                                              label="#{bindings.EndDate.hints.label}"
+                                                              required="#{bindings.EndDate.hints.mandatory}"
+                                                              columns="#{bindings.EndDate.hints.displayWidth}"
+                                                              shortDesc="#{bindings.EndDate.hints.tooltip}" id="id2"
+                                                              binding="#{backingBeanScope.backing_UserTasks.id2}">
+                                                    <f:validator binding="#{bindings.EndDate.validator}"/>
+                                                    <af:convertDateTime pattern="#{bindings.EndDate.format}"/>
+                                                </af:inputDate>
+                                                <af:selectOneChoice value="#{bindings.Status.inputValue}"
+                                                                    label="#{bindings.Status.label}"
+                                                                    required="#{bindings.Status.hints.mandatory}"
+                                                                    shortDesc="#{bindings.Status.hints.tooltip}"
+                                                                    id="soc1"
+                                                                    binding="#{backingBeanScope.backing_UserTasks.soc1}">
+                                                    <f:selectItems value="#{bindings.Status.items}" id="si1"
+                                                                   binding="#{backingBeanScope.backing_UserTasks.si1}"/>
+                                                    <f:validator binding="#{bindings.Status.validator}"/>
+                                                </af:selectOneChoice>
+                                                <af:inputText value="#{bindings.AssignedTo.inputValue}"
+                                                              label="#{bindings.AssignedTo.hints.label}"
+                                                              required="#{bindings.AssignedTo.hints.mandatory}"
+                                                              columns="#{bindings.AssignedTo.hints.displayWidth}"
+                                                              maximumLength="#{bindings.AssignedTo.hints.precision}"
+                                                              shortDesc="#{bindings.AssignedTo.hints.tooltip}" id="it4"
+                                                              binding="#{backingBeanScope.backing_UserTasks.it4}">
+                                                    <f:validator binding="#{bindings.AssignedTo.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.AssignedTo.format}"/>
+                                                </af:inputText>
+                                                <af:inputText value="#{bindings.AssignedBy.inputValue}"
+                                                              label="#{bindings.AssignedBy.hints.label}"
+                                                              required="#{bindings.AssignedBy.hints.mandatory}"
+                                                              columns="#{bindings.AssignedBy.hints.displayWidth}"
+                                                              maximumLength="#{bindings.AssignedBy.hints.precision}"
+                                                              shortDesc="#{bindings.AssignedBy.hints.tooltip}" id="it5"
+                                                              binding="#{backingBeanScope.backing_UserTasks.it5}">
+                                                    <f:validator binding="#{bindings.AssignedBy.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.AssignedBy.format}"/>
+                                                </af:inputText>
+                                                <f:facet name="footer">
+                                                    <af:panelGroupLayout layout="vertical" id="pgl2"
+                                                                         binding="#{backingBeanScope.backing_UserTasks.pgl2}"
+                                                                         halign="center">
+                                                        <af:panelGroupLayout layout="horizontal" id="pgl3"
+                                                                             binding="#{backingBeanScope.backing_UserTasks.pgl3}">
+                                                            <af:button actionListener="#{bindings.First.execute}"
+                                                                       text="First"
+                                                                       disabled="#{!bindings.First.enabled}"
+                                                                       partialSubmit="true" id="b1"
+                                                                       binding="#{backingBeanScope.backing_UserTasks.b1}"/>
+                                                            <af:button actionListener="#{bindings.Previous.execute}"
+                                                                       text="Previous"
+                                                                       disabled="#{!bindings.Previous.enabled}"
+                                                                       partialSubmit="true" id="b2"
+                                                                       binding="#{backingBeanScope.backing_UserTasks.b2}"/>
+                                                            <af:spacer width="10" height="10" id="s1"
+                                                                       binding="#{backingBeanScope.backing_UserTasks.s1}"/>
+                                                            <af:button text="Submit" id="b5"
+                                                                       binding="#{backingBeanScope.backing_UserTasks.b5}"/>
+                                                            <af:spacer width="10" height="10" id="s2"
+                                                                       binding="#{backingBeanScope.backing_UserTasks.s2}"/>
+                                                            <af:button actionListener="#{bindings.Next.execute}"
+                                                                       text="Next" disabled="#{!bindings.Next.enabled}"
+                                                                       partialSubmit="true" id="b3"
+                                                                       binding="#{backingBeanScope.backing_UserTasks.b3}"/>
+                                                            <af:button actionListener="#{bindings.Last.execute}"
+                                                                       text="Last" disabled="#{!bindings.Last.enabled}"
+                                                                       partialSubmit="true" id="b4"
+                                                                       binding="#{backingBeanScope.backing_UserTasks.b4}"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:panelGroupLayout>
+                                                </f:facet>
+                                            </af:panelFormLayout>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                    <af:gridRow marginTop="0px" height="80%" marginBottom="5px" id="gr2"
+                                                binding="#{backingBeanScope.backing_UserTasks.gr2}">
+                                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc2"
+                                                     binding="#{backingBeanScope.backing_UserTasks.gc2}">
+                                            <af:panelCollection id="pc1"
+                                                                binding="#{backingBeanScope.backing_UserTasks.pc1}">
+                                                <f:facet name="menus"/>
+                                                <f:facet name="toolbar">
+                                                    <af:toolbar id="t2"
+                                                                binding="#{backingBeanScope.backing_UserTasks.t2}">
+                                                        <af:button actionListener="#{bindings.CreateInsert.execute}"
+                                                                   text="CreateInsert"
+                                                                   disabled="#{!bindings.CreateInsert.enabled}"
+                                                                   id="b6"
+                                                                   binding="#{backingBeanScope.backing_UserTasks.b6}"/>
+                                                        <af:button text="Report" id="b8" destination="/reportservlet?id=#{backingBeanScope.backing_Home.userId}" targetFrame="_blank"
+                                                                   binding="#{backingBeanScope.backing_UserTasks.b8}"/>
+                                                    </af:toolbar>
+                                                </f:facet>
+                                                <f:facet name="statusbar"/>
+                                                <af:table value="#{bindings.Tasks2.collectionModel}" var="row"
+                                                          rows="#{bindings.Tasks2.rangeSize}"
+                                                          emptyText="#{bindings.Tasks2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                          rowBandingInterval="0"
+                                                          selectedRowKeys="#{bindings.Tasks2.collectionModel.selectedRow}"
+                                                          selectionListener="#{bindings.Tasks2.collectionModel.makeCurrent}"
+                                                          rowSelection="single" fetchSize="#{bindings.Tasks2.rangeSize}"
+                                                          filterModel="#{bindings.Tasks2Query.queryDescriptor}"
+                                                          queryListener="#{bindings.Tasks2Query.processQuery}"
+                                                          filterVisible="true" varStatus="vs" id="t1"
+                                                          partialTriggers=":::b1 :::b2 :::b3 :::b4 ::b6"
+                                                          binding="#{backingBeanScope.backing_UserTasks.t1}"
+                                                          columnStretching="column:c3">
+                                                    <af:column sortProperty="#{bindings.Tasks2.hints.TaskId.name}"
+                                                               filterable="true" sortable="true"
+                                                               headerText="#{bindings.Tasks2.hints.TaskId.label}"
+                                                               id="c1">
+                                                        <af:inputText value="#{row.bindings.TaskId.inputValue}"
+                                                                      label="#{bindings.Tasks2.hints.TaskId.label}"
+                                                                      required="#{bindings.Tasks2.hints.TaskId.mandatory}"
+                                                                      columns="#{bindings.Tasks2.hints.TaskId.displayWidth}"
+                                                                      maximumLength="#{bindings.Tasks2.hints.TaskId.precision}"
+                                                                      shortDesc="#{bindings.Tasks2.hints.TaskId.tooltip}"
+                                                                      id="it6">
+                                                            <f:validator binding="#{row.bindings.TaskId.validator}"/>
+                                                            <af:convertNumber groupingUsed="false"
+                                                                              pattern="#{bindings.Tasks2.hints.TaskId.format}"/>
+                                                        </af:inputText>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.Tasks2.hints.TaskTitle.name}"
+                                                               filterable="true" sortable="true"
+                                                               headerText="#{bindings.Tasks2.hints.TaskTitle.label}"
+                                                               id="c2">
+                                                        <af:inputText value="#{row.bindings.TaskTitle.inputValue}"
+                                                                      label="#{bindings.Tasks2.hints.TaskTitle.label}"
+                                                                      required="#{bindings.Tasks2.hints.TaskTitle.mandatory}"
+                                                                      columns="#{bindings.Tasks2.hints.TaskTitle.displayWidth}"
+                                                                      maximumLength="#{bindings.Tasks2.hints.TaskTitle.precision}"
+                                                                      shortDesc="#{bindings.Tasks2.hints.TaskTitle.tooltip}"
+                                                                      id="it7">
+                                                            <f:validator binding="#{row.bindings.TaskTitle.validator}"/>
+                                                        </af:inputText>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.Tasks2.hints.Description.name}"
+                                                               filterable="true" sortable="true"
+                                                               headerText="#{bindings.Tasks2.hints.Description.label}"
+                                                               id="c3" styleClass="AFStretchWidth">
+                                                        <af:inputText value="#{row.bindings.Description.inputValue}"
+                                                                      label="#{bindings.Tasks2.hints.Description.label}"
+                                                                      required="#{bindings.Tasks2.hints.Description.mandatory}"
+                                                                      columns="#{bindings.Tasks2.hints.Description.displayWidth}"
+                                                                      maximumLength="#{bindings.Tasks2.hints.Description.precision}"
+                                                                      shortDesc="#{bindings.Tasks2.hints.Description.tooltip}"
+                                                                      id="it8" inlineStyle="width:100%;">
+                                                            <f:validator binding="#{row.bindings.Description.validator}"/>
+                                                        </af:inputText>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.Tasks2.hints.StartDate.name}"
+                                                               filterable="true" sortable="true"
+                                                               headerText="#{bindings.Tasks2.hints.StartDate.label}"
+                                                               id="c4">
+                                                        <f:facet name="filter">
+                                                            <af:inputDate value="#{bindings.Tasks2Query.queryDescriptor.filterConjunctionCriterion.criterionMap.StartDate.value}"
+                                                                          id="id3"
+                                                                          binding="#{backingBeanScope.backing_UserTasks.id3}">
+                                                                <af:convertDateTime pattern="#{bindings.Tasks2.hints.StartDate.format}"/>
+                                                            </af:inputDate>
+                                                        </f:facet>
+                                                        <af:inputDate value="#{row.bindings.StartDate.inputValue}"
+                                                                      label="#{bindings.Tasks2.hints.StartDate.label}"
+                                                                      required="#{bindings.Tasks2.hints.StartDate.mandatory}"
+                                                                      columns="#{bindings.Tasks2.hints.StartDate.displayWidth}"
+                                                                      shortDesc="#{bindings.Tasks2.hints.StartDate.tooltip}"
+                                                                      id="id4">
+                                                            <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                                                            <af:convertDateTime pattern="#{bindings.Tasks2.hints.StartDate.format}"/>
+                                                        </af:inputDate>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.Tasks2.hints.EndDate.name}"
+                                                               filterable="true" sortable="true"
+                                                               headerText="#{bindings.Tasks2.hints.EndDate.label}"
+                                                               id="c5">
+                                                        <f:facet name="filter">
+                                                            <af:inputDate value="#{bindings.Tasks2Query.queryDescriptor.filterConjunctionCriterion.criterionMap.EndDate.value}"
+                                                                          id="id5"
+                                                                          binding="#{backingBeanScope.backing_UserTasks.id5}">
+                                                                <af:convertDateTime pattern="#{bindings.Tasks2.hints.EndDate.format}"/>
+                                                            </af:inputDate>
+                                                        </f:facet>
+                                                        <af:inputDate value="#{row.bindings.EndDate.inputValue}"
+                                                                      label="#{bindings.Tasks2.hints.EndDate.label}"
+                                                                      required="#{bindings.Tasks2.hints.EndDate.mandatory}"
+                                                                      columns="#{bindings.Tasks2.hints.EndDate.displayWidth}"
+                                                                      shortDesc="#{bindings.Tasks2.hints.EndDate.tooltip}"
+                                                                      id="id6">
+                                                            <f:validator binding="#{row.bindings.EndDate.validator}"/>
+                                                            <af:convertDateTime pattern="#{bindings.Tasks2.hints.EndDate.format}"/>
+                                                        </af:inputDate>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.Tasks2.hints.Status.name}"
+                                                               filterable="true" sortable="true"
+                                                               headerText="#{bindings.Tasks2.hints.Status.label}"
+                                                               id="c6">
+                                                        <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                                                            label="#{row.bindings.Status.label}"
+                                                                            required="#{bindings.Tasks2.hints.Status.mandatory}"
+                                                                            shortDesc="#{bindings.Tasks2.hints.Status.tooltip}"
+                                                                            id="soc2">
+                                                            <f:selectItems value="#{row.bindings.Status.items}"
+                                                                           id="si2"/>
+                                                            <f:validator binding="#{row.bindings.Status.validator}"/>
+                                                        </af:selectOneChoice>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.Tasks2.hints.AssignedBy.name}"
+                                                               filterable="true" sortable="true"
+                                                               headerText="#{bindings.Tasks2.hints.AssignedBy.label}"
+                                                               id="c7">
+                                                        <af:inputText value="#{row.bindings.AssignedBy.inputValue}"
+                                                                      label="#{bindings.Tasks2.hints.AssignedBy.label}"
+                                                                      required="#{bindings.Tasks2.hints.AssignedBy.mandatory}"
+                                                                      columns="#{bindings.Tasks2.hints.AssignedBy.displayWidth}"
+                                                                      maximumLength="#{bindings.Tasks2.hints.AssignedBy.precision}"
+                                                                      shortDesc="#{bindings.Tasks2.hints.AssignedBy.tooltip}"
+                                                                      id="it9">
+                                                            <f:validator binding="#{row.bindings.AssignedBy.validator}"/>
+                                                            <af:convertNumber groupingUsed="false"
+                                                                              pattern="#{bindings.Tasks2.hints.AssignedBy.format}"/>
+                                                        </af:inputText>
+                                                    </af:column>
+                                                </af:table>
+                                            </af:panelCollection>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                </af:panelGridLayout>
+                            </af:showDetailItem>
+                            <af:showDetailItem id="tab1" text="Edit Profile"
+                                               binding="#{backingBeanScope.backing_UserTasks.tab1}">
+                                <af:panelFormLayout id="pfl2" binding="#{backingBeanScope.backing_UserTasks.pfl2}">
+                                    <af:inputText value="#{bindings.UserId.inputValue}"
+                                                  label="#{bindings.UserId.hints.label}"
+                                                  required="#{bindings.UserId.hints.mandatory}"
+                                                  columns="#{bindings.UserId.hints.displayWidth}"
+                                                  maximumLength="#{bindings.UserId.hints.precision}"
+                                                  shortDesc="#{bindings.UserId.hints.tooltip}" id="it10"
+                                                  binding="#{backingBeanScope.backing_UserTasks.it10}">
+                                        <f:validator binding="#{bindings.UserId.validator}"/>
+                                        <af:convertNumber groupingUsed="false" pattern="#{bindings.UserId.format}"/>
+                                    </af:inputText>
+                                    <af:inputText value="#{bindings.FirstName.inputValue}"
+                                                  label="#{bindings.FirstName.hints.label}"
+                                                  required="#{bindings.FirstName.hints.mandatory}"
+                                                  columns="#{bindings.FirstName.hints.displayWidth}"
+                                                  maximumLength="#{bindings.FirstName.hints.precision}"
+                                                  shortDesc="#{bindings.FirstName.hints.tooltip}" id="it11"
+                                                  binding="#{backingBeanScope.backing_UserTasks.it11}">
+                                        <f:validator binding="#{bindings.FirstName.validator}"/>
+                                    </af:inputText>
+                                    <af:inputText value="#{bindings.MiddleName.inputValue}"
+                                                  label="#{bindings.MiddleName.hints.label}"
+                                                  required="#{bindings.MiddleName.hints.mandatory}"
+                                                  columns="#{bindings.MiddleName.hints.displayWidth}"
+                                                  maximumLength="#{bindings.MiddleName.hints.precision}"
+                                                  shortDesc="#{bindings.MiddleName.hints.tooltip}" id="it12"
+                                                  binding="#{backingBeanScope.backing_UserTasks.it12}">
+                                        <f:validator binding="#{bindings.MiddleName.validator}"/>
+                                    </af:inputText>
+                                    <af:inputText value="#{bindings.LastName.inputValue}"
+                                                  label="#{bindings.LastName.hints.label}"
+                                                  required="#{bindings.LastName.hints.mandatory}"
+                                                  columns="#{bindings.LastName.hints.displayWidth}"
+                                                  maximumLength="#{bindings.LastName.hints.precision}"
+                                                  shortDesc="#{bindings.LastName.hints.tooltip}" id="it13"
+                                                  binding="#{backingBeanScope.backing_UserTasks.it13}">
+                                        <f:validator binding="#{bindings.LastName.validator}"/>
+                                    </af:inputText>
+                                    <af:inputText value="#{bindings.Username.inputValue}"
+                                                  label="#{bindings.Username.hints.label}"
+                                                  required="#{bindings.Username.hints.mandatory}"
+                                                  columns="#{bindings.Username.hints.displayWidth}"
+                                                  maximumLength="#{bindings.Username.hints.precision}"
+                                                  shortDesc="#{bindings.Username.hints.tooltip}" id="it14"
+                                                  binding="#{backingBeanScope.backing_UserTasks.it14}">
+                                        <f:validator binding="#{bindings.Username.validator}"/>
+                                    </af:inputText>
+                                    <af:inputText value="#{bindings.Password.inputValue}"
+                                                  label="#{bindings.Password.hints.label}"
+                                                  required="#{bindings.Password.hints.mandatory}"
+                                                  columns="#{bindings.Password.hints.displayWidth}"
+                                                  maximumLength="#{bindings.Password.hints.precision}"
+                                                  shortDesc="#{bindings.Password.hints.tooltip}" id="it15"
+                                                  binding="#{backingBeanScope.backing_UserTasks.it15}">
+                                        <f:validator binding="#{bindings.Password.validator}"/>
+                                    </af:inputText>
+                                    <af:inputText value="#{bindings.Email.inputValue}"
+                                                  label="#{bindings.Email.hints.label}"
+                                                  required="#{bindings.Email.hints.mandatory}"
+                                                  columns="#{bindings.Email.hints.displayWidth}"
+                                                  maximumLength="#{bindings.Email.hints.precision}"
+                                                  shortDesc="#{bindings.Email.hints.tooltip}" id="it16"
+                                                  binding="#{backingBeanScope.backing_UserTasks.it16}">
+                                        <f:validator binding="#{bindings.Email.validator}"/>
+                                    </af:inputText>
+                                    <af:inputText value="#{bindings.Mobile.inputValue}"
+                                                  label="#{bindings.Mobile.hints.label}"
+                                                  required="#{bindings.Mobile.hints.mandatory}"
+                                                  columns="#{bindings.Mobile.hints.displayWidth}"
+                                                  maximumLength="#{bindings.Mobile.hints.precision}"
+                                                  shortDesc="#{bindings.Mobile.hints.tooltip}" id="it17"
+                                                  binding="#{backingBeanScope.backing_UserTasks.it17}">
+                                        <f:validator binding="#{bindings.Mobile.validator}"/>
+                                    </af:inputText>
+                                    <af:selectOneChoice value="#{bindings.UserType.inputValue}"
+                                                        label="#{bindings.UserType.label}"
+                                                        required="#{bindings.UserType.hints.mandatory}"
+                                                        shortDesc="#{bindings.UserType.hints.tooltip}" id="soc3"
+                                                        binding="#{backingBeanScope.backing_UserTasks.soc3}">
+                                        <f:selectItems value="#{bindings.UserType.items}" id="si3"
+                                                       binding="#{backingBeanScope.backing_UserTasks.si3}"/>
+                                        <f:validator binding="#{bindings.UserType.validator}"/>
+                                    </af:selectOneChoice>
+                                    <f:facet name="footer">
+                                        <af:button text="Submit" id="b7"
+                                                   binding="#{backingBeanScope.backing_UserTasks.b7}"/>
+                                    </f:facet>
+                                </af:panelFormLayout>
+                            </af:showDetailItem>
+                        </af:panelTabbed>
+                    </f:facet>
+                </af:pageTemplate>
+            </af:form>
+        </af:document>
+    </f:view>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_UserTasks-->
+</jsp:root>

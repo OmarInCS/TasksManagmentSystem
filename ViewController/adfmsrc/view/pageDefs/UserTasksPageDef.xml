@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="UserTasksPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="view.pageDefs.templatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="Tasks2" RangeSize="25" DataControl="TasksAMDataControl" id="Tasks2Iterator"/>
+    <searchRegion Binds="Tasks2Iterator" Criteria="" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Tasks2Query"/>
+    <iterator Binds="Users1" RangeSize="25" DataControl="TasksAMDataControl" id="Users1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Tasks2Iterator" id="TaskId">
+      <AttrNames>
+        <Item Value="TaskId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Tasks2Iterator" id="TaskTitle">
+      <AttrNames>
+        <Item Value="TaskTitle"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Tasks2Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Tasks2Iterator" id="StartDate">
+      <AttrNames>
+        <Item Value="StartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Tasks2Iterator" id="EndDate">
+      <AttrNames>
+        <Item Value="EndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Tasks2Iterator" StaticList="false" Uses="LOV_Status" id="Status" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Tasks2Iterator" id="AssignedTo">
+      <AttrNames>
+        <Item Value="AssignedTo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Tasks2Iterator" id="AssignedBy">
+      <AttrNames>
+        <Item Value="AssignedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="Tasks2Iterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="Tasks2Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="Tasks2Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="Tasks2Iterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <tree IterBinding="Tasks2Iterator" id="Tasks2">
+      <nodeDefinition DefName="model.views.TasksVO" Name="Tasks20">
+        <AttrNames>
+          <Item Value="TaskId"/>
+          <Item Value="TaskTitle"/>
+          <Item Value="Description"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="Status"/>
+          <Item Value="AssignedBy"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="Tasks2Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="Users1Iterator" id="UserId">
+      <AttrNames>
+        <Item Value="UserId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="MiddleName">
+      <AttrNames>
+        <Item Value="MiddleName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="Username">
+      <AttrNames>
+        <Item Value="Username"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="Password">
+      <AttrNames>
+        <Item Value="Password"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="Mobile">
+      <AttrNames>
+        <Item Value="Mobile"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Users1Iterator" StaticList="false" Uses="LOV_UserType" id="UserType" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>
